@@ -103,6 +103,10 @@
    - Create a `GameViewModel` class to track the number of games played and won.
 
    ```kotlin
+   import androidx.lifecycle.LiveData
+   import androidx.lifecycle.MutableLiveData
+   import androidx.lifecycle.ViewModel
+   
    class GameViewModel : ViewModel() {
        private var _playedGames = MutableLiveData(0)
        val playedGames: LiveData<Int> = _playedGames
@@ -153,16 +157,23 @@
    - In `LandingFragment.kt`, observe the `GameViewModel` to update the stats.
 
    ```kotlin
+   import android.os.Bundle
+   import androidx.fragment.app.Fragment
+   import android.view.LayoutInflater
+   import android.view.View
+   import android.view.ViewGroup
+   import androidx.fragment.app.activityViewModels
+   import androidx.navigation.fragment.findNavController
+   
    class LandingFragment : Fragment() {
 
-       private lateinit var viewModel: GameViewModel
+       private val viewModel: GameViewModel by activityViewModels()
 
        override fun onCreateView(
            inflater: LayoutInflater, container: ViewGroup?,
            savedInstanceState: Bundle?
        ): View? {
            val binding = FragmentLandingBinding.inflate(inflater, container, false)
-           viewModel = ViewModelProvider(requireActivity())[GameViewModel::class.java]
 
            viewModel.playedGames.observe(viewLifecycleOwner) { played ->
                updateGameStats(binding, played, viewModel.wonGames.value ?: 0)
@@ -218,16 +229,23 @@
    - In `GameFragment.kt`, check if both buttons are toggled to increment the number of games won.
 
    ```kotlin
+   import android.os.Bundle
+   import androidx.fragment.app.Fragment
+   import android.view.LayoutInflater
+   import android.view.View
+   import android.view.ViewGroup
+   import androidx.fragment.app.activityViewModels
+   import androidx.navigation.fragment.findNavController
+   
    class GameFragment : Fragment() {
 
-       private lateinit var viewModel: GameViewModel
+       private val viewModel: GameViewModel by activityViewModels()
 
        override fun onCreateView(
            inflater: LayoutInflater, container: ViewGroup?,
            savedInstanceState: Bundle?
        ): View? {
            val binding = FragmentGameBinding.inflate(inflater, container, false)
-           viewModel = ViewModelProvider(requireActivity())[GameViewModel::class.java]
 
            binding.toggleButton1.setOnCheckedChangeListener { _, isChecked1 ->
                val isChecked2 = binding.toggleButton2.isChecked
