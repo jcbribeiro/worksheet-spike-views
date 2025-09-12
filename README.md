@@ -6,7 +6,7 @@
 
 2. **Enable View Binding**
 
-   - In your `build.gradle (Module)` file, enable View Binding using the recommended syntax:
+   - In your `build.gradle.kts (Module: app)` file, enable View Binding using the recommended syntax:
 
      ```kotlin
      android {
@@ -24,8 +24,8 @@
 
      ```toml
      [versions]
-     androidx-navigation = "2.7.0"
-     androidx-lifecycle = "2.6.1"
+     androidx-navigation = "2.9.4"
+     androidx-lifecycle = "2.9.3"
 
      [libraries]
      androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "androidx-navigation" }
@@ -33,7 +33,7 @@
      androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle" }
      ```
 
-   - In `build.gradle (Module)`, add:
+   - In `build.gradle.kts (Module: app)`, add:
 
      ```kotlin
      dependencies {
@@ -66,7 +66,7 @@
        <!-- TODO: Update the package paths accordingly -->
        <fragment
            android:id="@+id/landingFragment"
-           android:name="pt.ipleiria.taes_spike_views_test.LandingFragment"
+           android:name="pt.ipleiria.worksheet_spike_views.LandingFragment"
            android:label="LandingFragment"
            tools:layout="@layout/fragment_landing">
            <action
@@ -76,7 +76,7 @@
 
        <fragment
            android:id="@+id/gameFragment"
-           android:name="pt.ipleiria.taes_spike_views_test.GameFragment"
+           android:name="pt.ipleiria.worksheet_spike_views.GameFragment"
            android:label="GameFragment"
            tools:layout="@layout/fragment_game" />
    </navigation>
