@@ -267,3 +267,10 @@
        }
    }
    ```
+
+### 6. To Learn More
+
+- Developing Android Apps with Kotlin
+    - https://www.udacity.com/enrollment/ud9012
+    - Udacity course on developing Android apps in the Kotlin programming language.
+
